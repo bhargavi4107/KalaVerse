@@ -1,13 +1,67 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My E-Commerce Store</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-    <h1>Welcome to My E-Commerce Store</h1>
+{% block content %}
 
-    <p>This is my first Django webpage.</p>
+<section class="hero">
 
-</body>
-</html>
+    <div class="hero-text">
+
+        <h1>
+            Where Every Artist <br>
+            Finds Their Stage.
+        </h1>
+
+        <p>
+            Discover premium dance accessories,
+            musical instruments, fine art supplies,
+            books and much more.
+        </p>
+
+        <div class="hero-buttons">
+            <button class="primary-btn">
+                Explore Collection
+            </button>
+
+            <button class="secondary-btn">
+                Learn More
+            </button>
+        </div>
+
+    </div>
+
+    <div class="hero-image">
+
+        🎭
+
+    </div>
+
+</section>
+<section class="products">
+
+    <h2>Featured Products</h2>
+
+    <div class="product-grid">
+
+        {% for product in products %}
+
+        <div class="product-card">
+
+            <h3>{{ product.name }}</h3>
+
+            <p>{{ product.category }}</p>
+
+            <p>₹ {{ product.price }}</p>
+
+            <a href="{% url 'product_detail' product.id %}">
+               <button>View Details</button>
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

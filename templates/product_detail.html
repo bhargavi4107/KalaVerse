@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="product-detail">
+
+    <h1>{{ product.name }}</h1>
+
+    <h3>Category</h3>
+    <p>{{ product.category }}</p>
+
+    <h3>Art Form</h3>
+    <p>{{ product.art_form }}</p>
+
+    <h3>Experience Level</h3>
+    <p>{{ product.experience_level }}</p>
+
+    <h3>Price</h3>
+    <p>₹ {{ product.price }}</p>
+
+    <h3>Description</h3>
+    <p>{{ product.description }}</p>
+
+    <h3>Brand</h3>
+    <p>{{ product.brand }}</p>
+
+    <h3>Stock</h3>
+    <p>{{ product.stock }}</p>
+
+    <br>
+
+    <button>Add to Art Bag</button>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="product-detail">
+
+    <h1>Checkout</h1>
+
+    {% if cart_items %}
+
+        <table style="width:100%; border-collapse:collapse;">
+
+            <tr>
+                <th align="left">Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+
+            {% for item in cart_items %}
+
+            <tr>
+                <td>{{ item.product.name }}</td>
+                <td align="center">{{ item.quantity }}</td>
+                <td align="center">
+                    ₹{% widthratio item.product.price 1 item.quantity %}
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        <br>
+
+        <h2>Total: ₹{{ total }}</h2>
+
+        <br>
+
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit">Place Order</button>
+        </form>
+
+    {% else %}
+
+        <h3>Your Art Bag is empty.</h3>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

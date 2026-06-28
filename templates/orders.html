@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="product-detail">
+
+    <h1>My Orders</h1>
+
+    {% if orders %}
+
+        <table style="width:100%; border-collapse:collapse;">
+
+            <tr>
+                <th align="left">Order ID</th>
+                <th>Date</th>
+                <th>Total</th>
+            </tr>
+
+            {% for order in orders %}
+
+            <tr>
+                <td>#{{ order.id }}</td>
+                <td>{{ order.created_at }}</td>
+                <td>₹{{ order.total_amount }}</td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    {% else %}
+
+        <h3>No orders yet.</h3>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

@@ -1,7 +1,8 @@
 from django.contrib import admin
-from .models import Product
+from .models import Product, Order
 
-@admin.register(Product)
+admin.site.register(Product)
+admin.site.register(Order)
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
         "name",

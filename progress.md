@@ -10,12 +10,12 @@
 - Hero section
 - Dynamic product listing
 - Product details page
-
-## Next
-
 - User Registration
 - Login
 - Logout
+
+## Next
+
 - Shopping Cart
 - Checkout
 - Orders

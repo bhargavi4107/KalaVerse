@@ -8,8 +8,6 @@ venv/
 # SQLite Database
 db.sqlite3
 
-# Uploaded Images
-media/
 
 # VS Code
 .vscode/

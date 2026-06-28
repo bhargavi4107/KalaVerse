@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 
@@ -31,7 +32,7 @@
 
     <div class="hero-image">
 
-        🎭
+      <img src="{% static 'images/hero.png' %}" alt="KalaVerse Hero">
 
     </div>
 
@@ -46,15 +47,21 @@
 
         <div class="product-card">
 
-            <h3>{{ product.name }}</h3>
+          {% if product.image %}
+            <img src="{{ product.image.url }}"
+              alt="{{ product.name }}"
+              class="product-image">
+          {% endif %}
 
-            <p>{{ product.category }}</p>
+           <h3>{{ product.name }}</h3>
 
-            <p>₹ {{ product.price }}</p>
+           <p>{{ product.category }}</p>
 
-            <a href="{% url 'product_detail' product.id %}">
-               <button>View Details</button>
-            </a>
+           <p>₹ {{ product.price }}</p>
+
+           <a href="{% url 'product_detail' product.id %}">
+             <button>View Details</button>
+           </a>
 
         </div>
 

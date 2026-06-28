@@ -1,35 +1,59 @@
 <nav class="navbar">
+
     <div class="logo">
-        🎭 <span>KalaVerse</span>
+        <a href="{% url 'home' %}" style="text-decoration:none; color:inherit;">
+            🎭 <span>KalaVerse</span>
+        </a>
     </div>
 
     <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Art Essentials</a></li>
-        <li><a href="#">Learn</a></li>
-        <li><a href="#">Events</a></li>
-        <li><a href="#">About</a></li>
+
+        <li>
+            <a href="{% url 'home' %}">Home</a>
+        </li>
+
+        <li>
+            <a href="{% url 'home' %}">Shop</a>
+        </li>
+
+        {% if user.is_authenticated %}
+
+        <li>
+            <a href="{% url 'cart' %}">Art Bag</a>
+        </li>
+
+        <li>
+            <a href="{% url 'orders' %}">My Orders</a>
+        </li>
+
+        {% endif %}
+
+        <li>
+            <a href="#">About</a>
+        </li>
+
     </ul>
 
     <div class="nav-buttons">
 
-      {% if user.is_authenticated %}
+        {% if user.is_authenticated %}
 
-        <span style="margin-right:15px;">
-            Hi, {{ user.username }}
-        </span>
+            <span style="margin-right:15px; font-weight:bold;">
+                Hi, {{ user.username|title }}
+            </span>
 
-        <a href="{% url 'logout' %}">
-            <button class="login-btn">Logout</button>
-        </a>
+            <a href="{% url 'logout' %}">
+                <button class="login-btn">Logout</button>
+            </a>
 
-      {% else %}
+        {% else %}
 
-        <a href="{% url 'login' %}">
-            <button class="login-btn">Login</button>
-        </a>
+            <a href="{% url 'login' %}">
+                <button class="login-btn">Login</button>
+            </a>
 
-      {% endif %}
+        {% endif %}
 
     </div>
+
 </nav>

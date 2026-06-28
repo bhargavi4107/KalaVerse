@@ -1,37 +1,34 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
 
-<div class="product-detail">
+<div class="product-detail-container">
 
-    <h1>{{ product.name }}</h1>
+    <div class="product-detail-image">
 
-    <h3>Category</h3>
-    <p>{{ product.category }}</p>
+        {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        {% endif %}
 
-    <h3>Art Form</h3>
-    <p>{{ product.art_form }}</p>
+    </div>
 
-    <h3>Experience Level</h3>
-    <p>{{ product.experience_level }}</p>
+    <div class="product-detail-info">
 
-    <h3>Price</h3>
-    <p>₹ {{ product.price }}</p>
+        <h1>{{ product.name }}</h1>
 
-    <h3>Description</h3>
-    <p>{{ product.description }}</p>
+        <h3>{{ product.category }}</h3>
 
-    <h3>Brand</h3>
-    <p>{{ product.brand }}</p>
+        <h2>₹ {{ product.price }}</h2>
 
-    <h3>Stock</h3>
-    <p>{{ product.stock }}</p>
+        <p>{{ product.description }}</p>
 
-    <br>
+        <a href="{% url 'add_to_cart' product.id %}">
+            <button>Add to Art Bag</button>
+        </a>
 
-    <a href="{% url 'add_to_cart' product.id %}">
-      <button>Add to Art Bag</button>
-    </a>
+    </div>
 
 </div>
 

@@ -2,35 +2,37 @@
 
 {% block content %}
 
-<div class="product-detail">
+<div class="orders-container">
 
     <h1>My Orders</h1>
 
     {% if orders %}
 
-        <table style="width:100%; border-collapse:collapse;">
+    <table class="orders-table">
 
-            <tr>
-                <th align="left">Order ID</th>
-                <th>Date</th>
-                <th>Total</th>
-            </tr>
+        <tr>
+            <th>Order ID</th>
+            <th>Date</th>
+            <th>Total Amount</th>
+            <th>Status</th>
+        </tr>
 
-            {% for order in orders %}
+        {% for order in orders %}
 
-            <tr>
-                <td>#{{ order.id }}</td>
-                <td>{{ order.created_at }}</td>
-                <td>₹{{ order.total_amount }}</td>
-            </tr>
+        <tr>
+            <td>#{{ order.id }}</td>
+            <td>{{ order.created_at }}</td>
+            <td>₹{{ order.total_amount }}</td>
+            <td><span class="status">Completed</span></td>
+        </tr>
 
-            {% endfor %}
+        {% endfor %}
 
-        </table>
+    </table>
 
     {% else %}
 
-        <h3>No orders yet.</h3>
+        <h2>No orders yet.</h2>
 
     {% endif %}
 

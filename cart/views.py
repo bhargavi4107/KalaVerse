@@ -27,8 +27,29 @@ def cart_view(request):
 
     cart_items = Cart.objects.filter(user=request.user)
 
+    grand_total = 0
+
+    for item in cart_items:
+        grand_total += item.product.price * item.quantity
+
     return render(
         request,
         "cart/cart.html",
-        {"cart_items": cart_items}
+        {
+            "cart_items": cart_items,
+            "grand_total": grand_total
+        }
     )
+
+@login_required
+def remove_from_cart(request, cart_id):
+
+    cart_item = get_object_or_404(
+        Cart,
+        id=cart_id,
+        user=request.user
+    )
+
+    cart_item.delete()
+
+    return redirect("cart")
